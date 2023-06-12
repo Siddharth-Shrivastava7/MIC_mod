@@ -64,6 +64,7 @@ def single_gpu_test(model,
         mmcv.mkdir_or_exist('.efficient_test')
     for i, data in enumerate(data_loader):
         with torch.no_grad():
+            # print('>>>>>>>>>>>>>>', data['img'][0].shape) ##  torch.Size([1, 3, h, w]) >> {h,w from the config}
             result = model(return_loss=False, logits_ouput= False, **data)   
     
         if show or out_dir: 
