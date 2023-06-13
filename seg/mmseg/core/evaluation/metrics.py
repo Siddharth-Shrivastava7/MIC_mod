@@ -5,6 +5,8 @@ from collections import OrderedDict
 import mmcv
 import numpy as np
 import torch
+from PIL import Image
+from mmseg.ops import resize
 
 
 def f_score(precision, recall, beta=1):
@@ -123,6 +125,26 @@ def total_intersect_and_union(results,
     total_area_pred_label = torch.zeros((num_classes, ), dtype=torch.float64)
     total_area_label = torch.zeros((num_classes, ), dtype=torch.float64)
     for i in range(num_imgs):
+        
+        ## have to comment this later
+        # ## here have to resize the predicted label and the gt label  ## and have to copy this to different mmseg folder in the base MIC_mod/seg directory one.
+        # # res = Image.fromarray(np.array(results[i], dtype=np.uint8))
+        # # res = res.resize((512,256))
+        # res = torch.tensor(results[i]).unsqueeze(0).unsqueeze(1).float()
+        # res = resize(res, size=(512, 1024), mode="nearest")
+        # res = res.squeeze()
+        # results[i] = np.array(res)
+        
+        # # gt = Image.fromarray(np.array(gt_seg_maps[i], dtype=np.uint8))
+        # # gt = gt.resize((512,256))
+        # # gt_seg_maps[i] = np.array(gt)
+        # gt = torch.tensor(gt_seg_maps[i]).unsqueeze(0).unsqueeze(1).float()
+        # gt = resize(gt, size=(512, 1024), mode="nearest")
+        # gt = gt.squeeze()
+        # gt_seg_maps[i] = np.array(gt)
+        # # print('>>>>>>>>>>>>>>>>', gt_seg_maps[i].shape, results[i].shape)
+        # ## have to comment this later 
+        
         area_intersect, area_union, area_pred_label, area_label = \
             intersect_and_union(
                 results[i], gt_seg_maps[i], num_classes, ignore_index,
