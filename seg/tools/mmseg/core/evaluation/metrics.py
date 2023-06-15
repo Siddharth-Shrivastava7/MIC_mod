@@ -134,7 +134,7 @@ def total_intersect_and_union(results,
         # res = resize(res, size=(256, 512), mode="nearest")
         # res = res.squeeze()
         # results[i] = np.array(res)
-        
+               
         # # gt = Image.fromarray(np.array(gt_seg_maps[i], dtype=np.uint8))
         # # gt = gt.resize((512,256))
         # # gt_seg_maps[i] = np.array(gt)
@@ -142,6 +142,13 @@ def total_intersect_and_union(results,
         # gt = resize(gt, size=(256, 512), mode="nearest")
         # gt = gt.squeeze()
         # gt_seg_maps[i] = np.array(gt)
+        
+        # ## saving images 
+        # res = Image.fromarray(results[i])
+        # res.save('/home/sidd_s/MIC_mod/seg/prediction_resize.png')
+        # gt = Image.fromarray(gt_seg_maps[i])
+        # gt.save('/home/sidd_s/MIC_mod/seg/gt_resize.png')
+        # # break 
         # ## have to comment this later 
         # # print('>>>>>>>>>>>>>>>>', gt_seg_maps[i].shape, results[i].shape)
         

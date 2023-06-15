@@ -126,23 +126,29 @@ def total_intersect_and_union(results,
     total_area_label = torch.zeros((num_classes, ), dtype=torch.float64)
     for i in range(num_imgs):
         
-        ## have to comment this later
-        # ## here have to resize the predicted label and the gt label  ## and have to copy this to different mmseg folder in the base MIC_mod/seg directory one.
+        # ## here have to resize the predicted label and the gt label  ## have to comment this later ## and have to copy this to different mmseg folder in the base MIC_mod/seg directory one.
         # # res = Image.fromarray(np.array(results[i], dtype=np.uint8))
         # # res = res.resize((512,256))
         # res = torch.tensor(results[i]).unsqueeze(0).unsqueeze(1).float()
-        # res = resize(res, size=(512, 1024), mode="nearest")
+        # res = resize(res, size=(256, 512), mode="nearest")
         # res = res.squeeze()
         # results[i] = np.array(res)
-        
+               
         # # gt = Image.fromarray(np.array(gt_seg_maps[i], dtype=np.uint8))
         # # gt = gt.resize((512,256))
         # # gt_seg_maps[i] = np.array(gt)
         # gt = torch.tensor(gt_seg_maps[i]).unsqueeze(0).unsqueeze(1).float()
-        # gt = resize(gt, size=(512, 1024), mode="nearest")
+        # gt = resize(gt, size=(256, 512), mode="nearest")
         # gt = gt.squeeze()
         # gt_seg_maps[i] = np.array(gt)
-        # # print('>>>>>>>>>>>>>>>>', gt_seg_maps[i].shape, results[i].shape)
+        
+        # ## saving images 
+        # res = Image.fromarray(results[i])
+        # res.save('/home/sidd_s/MIC_mod/seg/prediction_resize.png')
+        # gt = Image.fromarray(gt_seg_maps[i])
+        # gt.save('/home/sidd_s/MIC_mod/seg/gt_resize.png')
+        # print('>>>>>>>>>>>>>>>>', gt_seg_maps[i].shape, results[i].shape)
+        # break
         # ## have to comment this later 
         
         area_intersect, area_union, area_pred_label, area_label = \
