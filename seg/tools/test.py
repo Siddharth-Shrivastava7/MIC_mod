@@ -2,6 +2,7 @@
 # Modifications:
 # - Modification of config and checkpoint to support legacy models
 # - Add inference mode and HRDA output flag
+## just for fun, adding this 
 
 import argparse
 import os
