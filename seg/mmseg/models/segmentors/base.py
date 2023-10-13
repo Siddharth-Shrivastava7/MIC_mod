@@ -99,7 +99,7 @@ class BaseSegmentor(BaseModule, metaclass=ABCMeta):
             return self.aug_test(imgs, img_metas, logits_output, **kwargs)
 
     @auto_fp16(apply_to=('img', ))
-    def forward(self, img, img_metas, return_loss=True, logits_ouput= False, **kwargs):
+    def forward(self, img, img_metas, return_loss=True, logits_output= False, **kwargs):
         """Calls either :func:`forward_train` or :func:`forward_test` depending
         on whether ``return_loss`` is ``True``.
 
@@ -114,8 +114,8 @@ class BaseSegmentor(BaseModule, metaclass=ABCMeta):
             return self.forward_train(img, img_metas, **kwargs)
         
         else:
-            if logits_ouput:
-                return self.forward_test(img, img_metas, logits_ouput, **kwargs)
+            if logits_output:
+                return self.forward_test(img, img_metas, logits_output, **kwargs)
             else:
                 return self.forward_test(img, img_metas, **kwargs)  
         
